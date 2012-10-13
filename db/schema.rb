@@ -11,7 +11,34 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121013031703) do
+ActiveRecord::Schema.define(:version => 20121013170231) do
+
+  create_table "requests", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "description"
+    t.integer  "upvotes"
+    t.integer  "downvotes"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "requests", ["user_id"], :name => "index_requests_on_user_id"
+
+  create_table "responses", :force => true do |t|
+    t.integer  "request_id"
+    t.integer  "user_id"
+    t.string   "url"
+    t.string   "title"
+    t.text     "response"
+    t.integer  "upvotes"
+    t.integer  "downvotes"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "responses", ["request_id"], :name => "index_responses_on_request_id"
+  add_index "responses", ["user_id"], :name => "index_responses_on_user_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
