@@ -1,0 +1,42 @@
+%h2 Sign up
+
+%= form_for(@request) do |f| 
+  %= f.label :name
+  <br />
+    <%= f.text_field :name %></div>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email %></div>
+
+  <div><%= f.label :password %><br />
+  <%= f.password_field :password %></div>
+
+  <div><%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %></div>
+    
+  <div><%= f.label :address %><br />
+  <%= f.text_field :address %></div>
+  
+  <div><%= f.label :city %><br />
+  <%= f.text_field :city %></div>
+  
+  <div><%= f.label :state %><br />
+  <%= f.text_field :state %></div>
+  
+  <div><%= f.label :zipcode %><br />
+  <%= f.text_field :zipcode %></div>
+  
+  <div><%= f.label :radius %><br />
+  <%= f.number_field :radius %></div>
+  
+  <div><%= f.label :telephone %><br />
+  <%= f.telephone_field :telephone %></div>
+  
+  <div><%= f.label :dob %><br />
+  <%= f.date_select :dob %></div>
+  
+  <div><%= f.label :catchphrase %><br />
+  <%= f.text_field :catchphrase %></div>
+  
+  <div><%= f.submit "Sign up" %></div>
+<% end %>
