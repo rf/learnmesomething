@@ -4,8 +4,8 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
       %title= content_for?(:title) ? yield(:title) : "Learnmesomething"
       %meta{:content => content_for?(:description) ? yield(:description) : "Learnmesomething", :name => "description"}
-        = stylesheet_link_tag "application", :media => "all"
-        = javascript_include_tag "application"
+        = stylesheet_link_tag "application", controller.controller_name, :media => "all"
+        = javascript_include_tag "application", controller.controller_name
         = csrf_meta_tags
         = yield(:head)
   %body
