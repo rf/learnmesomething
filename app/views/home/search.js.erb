@@ -1,1 +1,5 @@
-window.autocomplete = <% @data %>;
+window.autocomplete = [
+  <% @data.each do |result| %>
+    "<%= result.title %>",
+  <% end %>
+];
