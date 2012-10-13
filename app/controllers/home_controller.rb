@@ -31,6 +31,5 @@ class HomeController < ApplicationController
       request = Request.joins(:tags).where('tags.name' => tag)
       @data.concat request
     end
-    
   end
 end

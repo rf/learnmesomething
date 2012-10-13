@@ -2,7 +2,10 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+window.autocomplete = []
+
 $ ->
   ($ '#search').keydown ->
-    # keydown handler
+    text = ($ '#search').attr 'value'
+    $.getScript "search/#{text}"
 
