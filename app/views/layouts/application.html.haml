@@ -10,9 +10,10 @@
         = yield(:head)
   %body
     #container.container
-      %header.top-bar
-        = render 'layouts/navigation'
-        = render 'layouts/messages'
+      %header
+        %nav.top-bar
+          = render 'layouts/navigation'
+          = render 'layouts/messages'
       #main{:role => "main"}
         = yield
       %footer
