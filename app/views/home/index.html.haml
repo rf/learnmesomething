@@ -1,4 +1,6 @@
 %h3 Home
+%input#search
 - @users.each do |user|
   %p
     User: #{link_to user.name, user}
+    
