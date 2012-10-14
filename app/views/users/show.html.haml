@@ -1,7 +1,13 @@
-%h3 User
+%h3 #{@user.name}'s Stuff
 %p
   User: #{@user.name}
 %p
   Email: #{@user.email if @user.email}
+
+- @user.responses.each do |response|
+  %h4 #{response.title}
+  .row
+    %p.twelve.columns
+      #{truncate(response.response, :length => 1000, :omission => "...")} #{link_to("(Full Article)", response.url)}
 
 = link_to "Make a new Question", new_request_path
