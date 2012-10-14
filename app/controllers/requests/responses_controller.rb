@@ -73,7 +73,7 @@ class Requests::ResponsesController < ApplicationController
           
         format.html{  redirect_to request_path(@response.request), :notice => 'Your vote has been counted'}
       else
-        format.html{ redirect_to request_path(@response.request), :notice => 'Your vote has already already already already already already already already been counted' }
+        format.html{ redirect_to request_path(@response.request), :notice => 'Your vote has already been counted' }
       end
     end
   end

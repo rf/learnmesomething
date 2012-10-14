@@ -1,5 +1,5 @@
 %ul.responses
-  - @responses.each do |response|
+  - @responses.order("upvotes DESC").each do |response|
     %li.response
       .controls
         %fieldset.votebox

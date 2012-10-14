@@ -90,3 +90,23 @@ ul.nav li {
     max-width: 900px;
     padding: 30px;
 }
+
+.request_badge{
+  display: inline-block;
+  border-radius: 500px;
+  border-width: 4px;
+  border-style: solid;
+  background: #ffff00;
+  border-color: #aacc00;
+  padding: 25px;
+}
+
+.response_badge{
+  display: inline-block;
+  border-radius: 500px;
+  border-width: 4px;
+  border-style: solid;
+  background: #ff0000;
+  border-color: #cc00aa;
+  padding: 25px;
+}
