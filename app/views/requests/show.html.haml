@@ -1,20 +1,20 @@
 .row
-  .twelve.columns
-    %h2
-      = @request.title
-    %h3.subheader
-      Requested by #{@request.user.email}
-    %hr
-    %p.panel
-      = @request.description
+  %h2
+    = @request.title
+  %h3.subheader
+    Requested by #{@request.user.email}
   %hr
-    #responses
-    - if user_signed_in?
-      = form_for([@request, @response], :remote => true) do |f| 
-        %div.row
-          = f.label "Respond to this question"
-          = f.text_field :url, :class => "twelve columns", :placeholder => "The URL of your answer..."
-          = f.submit "Submit", :class => "button success", :id => "post-response"
+  %p.panel
+    = @request.description
+%h3 Responses
+%hr
+#responses
+- if user_signed_in?
+  = form_for([@request, @response], :remote => true) do |f| 
+    %div.row
+      = f.label "Respond to this question"
+      = f.text_field :url, :class => "twelve columns", :placeholder => "The URL of your answer..."
+      = f.submit "Submit", :class => "button success", :id => "post-response"
 
 %ul
   %li
