@@ -58,4 +58,40 @@ class RequestsController < ApplicationController
       format.html { redirect_to requests_path }
     end
   end
+  
+  def upvote
+    @request = Request.find(params[:id])
+    @request_vote = RequestVote.where(:user_id => current_user.id, :request_id => @request.id)
+    respond_to do |format|
+      if @request_vote.count == 0
+        @request.upvotes += 1
+        @request.save
+        @request_vote = RequestVote.create(:user_id => current_user.id, :request_id => @request.id)
+        @request_vote.save
+        format.html{ redirect_to requests_path,
+                     :notice => "you voted!" }
+      else
+        format.html{ redirect_to requests_path, 
+                     :notice => "You already voted" }
+      end
+    end
+  end
+
+  def downvote
+    @request = Request.find(params[:id])
+    @request_vote = RequestVote.where(:user_id => current_user.id, :request_id => @request.id)
+    respond_to do |format|
+      if @request_vote.count == 0
+        @request.downvotes += 1
+        @request.save
+        @request_vote = RequestVote.create(:user_id => current_user.id, :request_id => @request.id)
+        @request_vote.save
+        format.html{ redirect_to requests_path,
+                     :notice => "you voted!" }
+      else
+        format.html{ redirect_to requests_path, 
+                     :notice => "You already voted" }
+      end
+    end
+  end
 end

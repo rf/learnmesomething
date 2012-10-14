@@ -19,4 +19,7 @@ LearnMeSomething::Application.routes.draw do
   
   match "/requests/:request_id/responses/:id/upvote" => "requests/responses#upvote", :as => 'upvote_request_response', :via => :post
   match "/requests/:request_id/responses/:id/downvote" => "requests/responses#downvote", :as => 'downvote_request_response', :via => :post
+  
+  match "/requests/:id/upvote" => "requests#upvote", :as => 'upvote_request', :via => :post
+  match "/requests/:id/downvote" => "requests#downvote", :as => 'downvote_request', :via => :post
 end

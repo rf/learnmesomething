@@ -1,5 +1,9 @@
 - @requests.each do |request|
   %div.row
+    %button.general.foundicon-plus
+      = link_to "Upvote", upvote_request_path(request), :method => :post
+    %button.general.foundicon-minus
+      = link_to "Down Vote", downvote_request_path(request), :method => :post
     %div.two.columns
       #{request.total_votes} Votes
     %div.two.columns
