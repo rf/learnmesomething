@@ -3,7 +3,6 @@
   User: #{@user.name}
 %p
   Email: #{@user.email if @user.email}
-
 - @user.responses.each do |response|
   %h4 Question: #{response.request.title}
   .row
