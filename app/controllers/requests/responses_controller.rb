@@ -48,9 +48,9 @@ class Requests::ResponsesController < ApplicationController
     redirect_to request_path @response.request, notice: 'Your vote has been counted'
   end
 
-  def upvote
+  def downvote
     @response = Response.find params[:id]
-    @response.upvotes -= 1
+    @response.downvotes += 1
     @response.save
     redirect_to request_path @response.request, notice: 'Your vote has been counted'
   end
