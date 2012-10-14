@@ -1,6 +1,6 @@
 %h2 New Question
 
-= form_for([@user, @request]) do |f| 
+= form_for([@request]) do |f| 
   %ul
     - @request.errors.full_messages.each do |error|
       %li
@@ -8,9 +8,8 @@
 
   = f.label :title
   = f.text_field :title
-  
+
   = f.label :description
   = f.text_area :description
 
-  = f.submit "Submit"
-
+  = f.submit "Submit", :class => "button success"
