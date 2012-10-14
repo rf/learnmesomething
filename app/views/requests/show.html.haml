@@ -16,4 +16,11 @@
           %input{:type => "text", :name => :title, :class => "twelve columns", :placeholder => "Your response title..."}
           %input{:type => "submit", :value => "Post Response", :class => "success button", :id => "post-response"}
 
-= link_to "Back to Questions", requests_path
+%ul
+  %li
+    = link_to "Back to Questions", requests_path
+  - if @request.user == current_user
+    %li
+      = link_to "Edit Question", edit_request_path(@request)
+    %li
+      = link_to "Delete Question", request_path(@request), :method => :delete, :confirm => "Are you sure you want to delete this question?"

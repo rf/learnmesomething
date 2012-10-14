@@ -6,20 +6,18 @@ class RequestsController < ApplicationController
   end
 
   def new
-    @request = User.find(params[:user_id])
     @request = Request.new
   end
 
   def create
     @request = Request.create(params[:request])
-    @request[:user_id] = current_user.id
     @request[:upvotes] = 0
     @request[:downvotes] = 0
     @request.user = current_user
 
     respond_to do |format|
       if @request.save
-        format.html { redirect_to user_request_path(current_user, @request), :notice => 'Request has been created.' }
+        format.html { redirect_to request_path(@request), :notice => 'Request has been created.' }
       else
       	format.html { render :action => "new" }
       end
@@ -34,7 +32,7 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
     respond_to do |format|
       if @request.update_attributes(params[:request])
-      	format.html { redirect_to user_request_path(current_user, @request), :notice => 'Requests have been updated.' }
+      	format.html { redirect_to request_path(@request), :notice => 'Requests have been updated.' }
       else
       	format.html { render :action => "edit" }
       end
