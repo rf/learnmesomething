@@ -14,6 +14,6 @@ LearnMeSomething::Application.routes.draw do
   end
 
   resources :requests do
-    resources :responses, :controller => 'requests/responses', :only => [:index, :create, :delete]
+    resources :responses, :controller => 'requests/responses', :only => [:index, :create, :destroy, :edit, :update]
   end
 end

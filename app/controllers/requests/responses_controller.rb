@@ -22,6 +22,18 @@ class Requests::ResponsesController < ApplicationController
     end
   end
 
+  def edit
+    @response = Response.find params[:id]
+  end
+
+  def update
+
+  end
+
+  def delete
+
+  end
+
   private
 
   def fetch_request
