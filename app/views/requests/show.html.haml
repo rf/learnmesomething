@@ -1,11 +1,19 @@
-%h2
-  Question: 
-= @request.title
-
-%h3
-  Description
-= @request.description
-
-%br
+%div.row
+  %div.twelve.columns
+    %h2
+      = @request.title
+    %h3.subheader
+      Requested by #{@request.user.email}
+    %hr
+    %p.panel
+      = @request.description
+  %hr
+    - if user_signed_in?
+      %form
+        %div.row
+          %label
+            Respond to this question
+          %input{:type => "text", :name => :title, :class => "twelve columns", :placeholder => "Your response title..."}
+          %input{:type => "submit", :value => "Post Response", :class => "success button", :id => "post-response"}
 
 = link_to "Back to Questions", requests_path

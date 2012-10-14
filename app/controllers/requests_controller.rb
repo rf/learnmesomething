@@ -1,9 +1,10 @@
 class RequestsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:index, :show]
+
   def index
     @requests = Request.all
   end
-  
+
   def new
     @request = User.find(params[:user_id])
     @request = Request.new
@@ -14,6 +15,8 @@ class RequestsController < ApplicationController
     @request[:user_id] = current_user.id
     @request[:upvotes] = 0
     @request[:downvotes] = 0
+    @request.user = current_user
+
     respond_to do |format|
       if @request.save
         format.html { redirect_to user_request_path(current_user, @request), :notice => 'Request has been created.' }
