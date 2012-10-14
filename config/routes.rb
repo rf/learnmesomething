@@ -6,6 +6,7 @@ LearnMeSomething::Application.routes.draw do
   devise_for :users
 
   match "/search/:query" => "home#search"
+  match "/search/" => "home#search"
 
   resources :users do
     resources :requests, :controller => 'users/requests', :only => [:index]
