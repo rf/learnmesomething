@@ -1,9 +1,15 @@
 class Request < ActiveRecord::Base
   belongs_to :user
-  has_many :tags, :as => :taggable
   has_many :responses
 
+<<<<<<< HEAD
   attr_accessible :description, :downvotes, :title, :upvotes, :user_id
+=======
+  has_many :request_tags
+  has_many :tags, :through => :request_tags
+  
+  attr_accessible :description, :downvotes, :title, :upvotes
+>>>>>>> 319f2a9... fixed the associations
 
   validates_presence_of :title
   validates_presence_of :description

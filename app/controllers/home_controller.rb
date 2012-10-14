@@ -4,12 +4,33 @@ class HomeController < ApplicationController
   end
 
   def search
-    tags = params[:tags]
-    @request_results = []
-    tags.each do |tag|
-      request = Request.joins(:tag).where('tag.name' => tag)
-      request_results.concat request
+    # separate the query into tags and questions
+    query = params[:query].split.reduce ({tags: [], q: ""}) do |memo, item|
+      if /#.*/.match item 
+        memo[:tags].push item
+      else
+        memo[:q] += " " + item
+      end
+      memo
     end
-  end
 
+    # now we have query[:tags] which is an array of tags and query[:q] which is
+    # the question string if applicable
+    #puts query.inspect
+    #@data = query[:tags].reduce [] do |memo, item|
+    #  
+    #  memo.concat Request.joins(:tags).where(
+    #    'tags.name = ? AND requests.title LIKE ?',
+    #    item,
+    #    '%' + query[:q] + '%'
+    #  )
+    #end
+    @data = []
+    tags = query[:tags]
+    tags.each do |tag|
+      request = Request.joins(:tags).where('tags.name' => tag)
+      @data.concat request
+    end
+    
+  end
 end
