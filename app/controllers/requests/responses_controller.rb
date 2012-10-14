@@ -41,6 +41,19 @@ class Requests::ResponsesController < ApplicationController
     redirect_to request_path @response.request, notice: 'Response has been deleted.'
   end
 
+  def upvote
+    @response = Response.find params[:id]
+    @response.upvotes += 1
+    @response.save
+    redirect_to request_path @response.request, notice: 'Your vote has been counted'
+  end
+
+  def upvote
+    @response = Response.find params[:id]
+    @response.upvotes -= 1
+    @response.save
+    redirect_to request_path @response.request, notice: 'Your vote has been counted'
+  end
   private
 
   def fetch_request
