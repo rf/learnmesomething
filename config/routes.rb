@@ -16,4 +16,7 @@ LearnMeSomething::Application.routes.draw do
   resources :requests do
     resources :responses, :controller => 'requests/responses', :only => [:index, :create, :destroy, :edit, :update]
   end
+  
+  match "/requests/:request_id/responses/:id/upvote" => "requests/responses#upvote", :as => 'upvote_request_response', :via => :post
+  match "/requests/:request_id/responses/:id/downvote" => "requests/responses#downvote", :as => 'downvote_request_response', :via => :post
 end
