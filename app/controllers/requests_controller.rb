@@ -1,4 +1,8 @@
 class RequestsController < ApplicationController
+  before_filter :authenticate_user!
+  def index
+    @requests = Request.all
+  end
   def new
     @request = User.find(params[:user_id])
     @request = Request.new
@@ -11,11 +15,9 @@ class RequestsController < ApplicationController
     @request[:downvotes] = 0
     respond_to do |format|
       if @request.save
-        format.html { redirect_to @request, :notice => 'Request has been created.' }
-        format.json { render :json => @request, :status => :created, :location => @request }
+        format.html { redirect_to user_request_path(current_user, @request), :notice => 'Request has been created.' }
       else
       	format.html { render :action => "new" }
-        format.json { render :json => @request.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -28,11 +30,9 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
     respond_to do |format|
       if @request.update_attributes(params[:request])
-      	format.html { redirect_to requests_path, :notice => 'Requests have been updated.' }
-        format.json { render :json => @request, :status => :created, :location => @request }
+      	format.html { redirect_to user_request_path(current_user, @request), :notice => 'Requests have been updated.' }
       else
       	format.html { render :action => "edit" }
-        format.json { render :json => @request.errors, :status => :unprocessable_entity }
       end
     end
   end

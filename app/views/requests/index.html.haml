@@ -1,0 +1,23 @@
+%h2
+  Requests
+
+%table
+  %tr
+    %th Title
+    %th Description
+    %th
+    %th
+    %th
+
+
+  - @requests.each do |request|
+    %tr
+      %td= request.title
+      %td= request.description
+      %td= link_to 'Show', request
+      %td= link_to 'Edit', edit_request_path(request)
+      %td= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } 
+
+
+= link_to 'New Question', new_user_request_path(current_user) 
+

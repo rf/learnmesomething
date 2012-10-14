@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121013215048) do
+ActiveRecord::Schema.define(:version => 20121014011059) do
+
+  create_table "request_tags", :force => true do |t|
+    t.integer  "request_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "request_tags", ["request_id"], :name => "index_request_tags_on_request_id"
+  add_index "request_tags", ["tag_id"], :name => "index_request_tags_on_tag_id"
 
   create_table "requests", :force => true do |t|
     t.integer  "user_id"
@@ -58,6 +68,16 @@ ActiveRecord::Schema.define(:version => 20121013215048) do
     t.integer  "taggable_id"
     t.string   "taggable_type"
   end
+
+  create_table "user_tags", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "user_tags", ["tag_id"], :name => "index_user_tags_on_tag_id"
+  add_index "user_tags", ["user_id"], :name => "index_user_tags_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                :default => "", :null => false

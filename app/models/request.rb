@@ -8,4 +8,5 @@ class Request < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :description
 
+  accepts_nested_attributes_for :tags
 end
