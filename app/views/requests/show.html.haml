@@ -1,9 +1,12 @@
 .row
+  - if @request.user == current_user
+    %ul.controls.button-group
+      %li= link_to "Edit", edit_request_path(@request), class: "button small"
+      %li= link_to "Delete", request_path(@request), :method => :delete, :confirm => "Are you sure you want to delete this question?", class: "button alert small"
   %h2
     = @request.title
   %h3.subheader
     Requested by #{@request.user.email}
-  %hr
   %p.panel
     = @request.description
 %h3 Responses
@@ -15,12 +18,3 @@
       %h4 Respond to this question
       = f.text_field :url, class: "ten columns", :placeholder => "The URL of your answer..."
       = f.submit "Submit", :class => "button success postfix two columns", :id => "post-response"
-
-%ul
-  %li
-    = link_to "Back to Questions", requests_path
-  - if @request.user == current_user
-    %li
-      = link_to "Edit Question", edit_request_path(@request)
-    %li
-      = link_to "Delete Question", request_path(@request), :method => :delete, :confirm => "Are you sure you want to delete this question?"
