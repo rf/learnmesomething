@@ -27,11 +27,18 @@ class Requests::ResponsesController < ApplicationController
   end
 
   def update
-
+    @response = Response.find params[:id]
+    if @response.update_attributes params[:response]
+      redirect_to request_path @response.request, notice: 'Response has been updated'
+    else
+      redirect_to edit_request_response, notice: 'Failed to save.'
+    end
   end
 
   def delete
-
+    @response = Response.find params[:id]
+    @response.destroy
+    redirect_tp request_path @response.request, notice: 'Response has been deleted.'
   end
 
   private
