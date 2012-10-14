@@ -1,6 +1,12 @@
-%h3 Home
-- if user_signed_in?
-  = render 'requests/user_requests'
-- @users.each do |user|
-  %p
-    User: #{link_to user.name, user}
+%div.row
+  %div.twelve.columns
+    - if user_signed_in?
+      = render 'requests/user_requests'
+  %div.twelve.columns
+    %h2
+      Find or ask a question
+    %div.row.collapse
+      %form{ "data-remote" => "true", :action => "/search", :id => "ajax-search-form" }
+        %div.twelve.mobile-four.columns
+          %input#search{ :type => "text", :name => "query" }
+    %div#questions

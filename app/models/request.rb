@@ -12,7 +12,17 @@ class Request < ActiveRecord::Base
 
   accepts_nested_attributes_for :tags
 
+  delegate :url_helpers, to: 'Rails.application.routes' 
+
   def total_votes
     upvotes - downvotes
+  end
+
+  def relative_path
+    url_helpers.request_path(self)
+  end
+
+  def as_json(options = {})
+    super(options.reverse_merge({ :methods => [:relative_path, :total_votes] }))
   end
 end
