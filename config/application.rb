@@ -80,6 +80,6 @@ module LearnMeSomething
     config.assets.version = '1.0'
 
     # Adds asset paths
-    config.assets.paths << "#{Rails.root}/app/assets/fonts"
+    config.assets.paths << "#{Rails.root}/app/assets/fonts" << "#{Rails.root}/app/assets/images"
   end
 end
