@@ -5,3 +5,20 @@
 ul.responses {
     list-style: none;
 }
+
+.controls {
+    float: right;
+    text-align: center;
+}
+
+.votebox {
+    margin-top: 0px;
+    
+    p {
+        margin-bottom: 0px;
+    }
+
+    .button {
+        font-size: 18px;
+    }
+}
