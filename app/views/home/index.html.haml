@@ -1,14 +1,14 @@
 %div.row
   %div.eight.columns
     %h2
-      Find or ask a question
+      Search asked questions
     %div.row.collapse
       %form{ "data-remote" => "true", :action => "/search", :id => "ajax-search-form" }
         %div.twelve.mobile-four.columns
           %input#search{ :type => "text", :name => "query" }
+    %h4= link_to "Or ask a new question", new_request_path
     %ul#questions-autocomplete
   - if user_signed_in?
     %div.four.columns
       = render 'requests/user_requests'
     
-    = link_to "Create a new question", new_request_path
