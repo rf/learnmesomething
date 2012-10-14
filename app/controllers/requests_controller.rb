@@ -19,14 +19,20 @@ class RequestsController < ApplicationController
     @request[:upvotes] = 0
     @request[:downvotes] = 0
     @request.user = current_user
+    @request.save
+    tags = params[:tags]
+    tokens = tags.split(',')
+    tokens.each do |token| 
+      tag = Tag.find_or_create_by_name(token.downcase.strip)
+      requesttag = RequestTag.create(:request_id => @request.id,
+                                     :tag_id => tag.id)
+      #requesttag.request = @request
+      #requesttag.save
+    end
 
     respond_to do |format|
-      if @request.save
         format.html { redirect_to request_path(@request), :notice => 'Request has been created.' }
-      else
-      	format.html { render :action => "new" }
-      end
-    end
+  end
   end
 
   def update

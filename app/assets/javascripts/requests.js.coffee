@@ -17,3 +17,5 @@ $(document).ready ->
   ).bind('ajax:error', (evt, xhr, status, error) ->
     console.log(JSON.parse(xhr.responseText))
   )
+
+  $('#tags').tagsInput({ 'interactive':true, 'defaultText':'add a tag'})
