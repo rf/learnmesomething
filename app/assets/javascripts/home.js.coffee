@@ -6,6 +6,18 @@ window.autocomplete = []
 
 $ ->
   ($ '#search').keyup ->
-    text = ($ '#search').attr 'value'
-    $.getScript "search/#{encodeURIComponent text}"
+    container = $("#questions")
 
+    text = ($ '#search').attr 'value'
+    if(text && text.length)
+      $.get "search/#{encodeURIComponent text}", (questions) ->
+
+        if(questions.length)
+          container.html("")
+
+          for question in questions
+            container.append("<div class='row collapse'><div class='two columns'>#{question.total_votes}</div><div class='ten columns'><a href='#{question.relative_path}'><h3>#{question.title}</h3></a></div></div>")
+        else
+          container.html("No suggestions")
+    else
+      container.html("")

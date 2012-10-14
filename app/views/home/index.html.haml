@@ -1,6 +1,9 @@
-%h3 Home
-%input#search
-- @users.each do |user|
-  %p
-    User: #{link_to user.name, user}
-    
+%div.row
+  %div.twelve.columns
+    %h2
+      Find or ask a question
+    %div.row.collapse
+      %form{ :remote => "true", :action => "/search" }
+        %div.twelve.mobile-four.columns
+          %input#search{ :type => "text" }
+    %div#questions

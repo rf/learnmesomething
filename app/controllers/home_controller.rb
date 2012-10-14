@@ -28,5 +28,7 @@ class HomeController < ApplicationController
     if not query[:q].blank?
       @data.concat Request.find(:all, :conditions => ['title LIKE ?', "%#{query[:q]}%"])
     end
+
+    render :json => @data
   end
 end
