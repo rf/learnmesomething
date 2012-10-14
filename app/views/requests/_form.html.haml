@@ -12,4 +12,9 @@
   = f.label :description
   = f.text_area :description
 
+  - f.fields_for :tags do |builder|
+    = render 'tag_fields', f: builder
+
+  = link_to_add_fields "Add Tags", f, :labels %>
+
   = f.submit "Submit", :class => "button success"
