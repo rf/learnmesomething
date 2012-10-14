@@ -1,5 +1,5 @@
-%div.row
-  %div.twelve.columns
+.row
+  .twelve.columns
     %h2
       = @request.title
     %h3.subheader
@@ -8,7 +8,7 @@
     %p.panel
       = @request.description
   %hr
-    %div#responses
+    #responses
     - if user_signed_in?
       = form_for([@request, @response], :remote => true) do |f| 
         %div.row

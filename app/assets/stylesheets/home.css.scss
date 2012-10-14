@@ -2,8 +2,32 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+input#search {
+    margin-bottom: 0px;
+}
+
+ul#questions-autocomplete {
+    display: none;
+    list-style: none;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0px 0px 5px 5px;
+
+    li {
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+
+        &:last-child {
+            border-bottom: 0px;
+        }
+
+        &:hover {
+            background: #ddd;
+        }
+    }
+}
+
 ul.questions-sidebar {
-    float: left;
     list-style: none;
     border: 1px solid #ccc;
     border-radius: 5px;
