@@ -5,3 +5,23 @@
 ul.responses {
     list-style: none;
 }
+
+.controls {
+    float: right;
+    text-align: center;
+    margin-left: 20px;
+    margin-bottom: 18px;
+}
+
+.votebox {
+    margin-top: 0px;
+    margin-bottom: 9px;
+    
+    p {
+        margin-bottom: 0px;
+    }
+
+    .button {
+        font-size: 18px;
+    }
+}
