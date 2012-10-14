@@ -5,7 +5,7 @@ class Response < ActiveRecord::Base
   belongs_to :request
   belongs_to :user
 
-  attr_accessible :downvotes, :response, :title, :upvotes, :url
+  attr_accessible :downvotes, :response, :title, :upvotes, :url, :request_id, :user_id
 
   validates_presence_of :user
   validates_presence_of :request
