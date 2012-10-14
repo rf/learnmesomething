@@ -13,13 +13,17 @@ ul#questions-autocomplete {
     border-top: none;
     border-radius: 0px 0px 5px 5px;
 
-    li {
-        padding: 10px;
+    a {
+        display: block;
         border-bottom: 1px solid #ccc;
 
         &:last-child {
             border-bottom: 0px;
         }
+    }
+
+    li {
+        padding: 10px;
 
         &:hover {
             background: #ddd;

@@ -27,6 +27,6 @@ $ ->
       container.html("")
 
       for question in questions
-        container.append("<li class='row collapse'><div class='two columns'>#{question.total_votes} votes</div><div class='ten columns'><a href='#{question.relative_path}'><h3>#{question.title}</h3></a></div></div>")
+        container.append("<a href='#{question.relative_path}'><li class='row collapse'><div class='ten columns'><h3>#{question.title}</h3></div><div class='two columns'>#{question.total_votes} votes</div></li></a>")
     else
       container.html("No suggestions")
