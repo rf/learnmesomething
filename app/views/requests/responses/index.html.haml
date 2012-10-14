@@ -11,7 +11,8 @@
         - if response.user == current_user
           = link_to "Delete", request_response_path(@request, response), method: :delete, :confirm => "Are you sure you want to delete this response?", class: "button tiny alert"
       - if response.is_youtube?
-        = "#{truncate(response.response, :length => 250, :omission => "...")}".html_safe
+        .flex-video.widescreen
+          = "#{truncate(response.response, :length => 250, :omission => "...")}".html_safe
       - else
         = "#{truncate(response.response, :length => 250, :omission => "...")} #{link_to("(Full Article)", response.url)}".html_safe
     %hr
