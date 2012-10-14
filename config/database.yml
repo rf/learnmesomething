@@ -19,8 +19,8 @@ test:
   timeout: 5000
 
 production:
-  adapter: mysql
+  adapter: mysql2
   database: learnmesomething
-  password: W3C=Z;npX@DD
+  password: learnmesomething
   pool: 5
   timeout: 5000

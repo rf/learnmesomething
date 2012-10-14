@@ -9,6 +9,11 @@ group :assets do
   gem 'jquery-ui-rails'
 end
 
+group :production do
+  gem 'mysql2'
+  gem 'therubyracer'
+end
+
 gem 'jquery-rails'
 gem 'foreman'
 gem "thin", ">= 1.5.0", :group => [:development, :test]
