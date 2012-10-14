@@ -16,20 +16,15 @@ class HomeController < ApplicationController
 
     # now we have query[:tags] which is an array of tags and query[:q] which is
     # the question string if applicable
-    #puts query.inspect
-    #@data = query[:tags].reduce [] do |memo, item|
-    #  
-    #  memo.concat Request.joins(:tags).where(
-    #    'tags.name = ? AND requests.title LIKE ?',
-    #    item,
-    #    '%' + query[:q] + '%'
-    #  )
-    #end
-    @data = []
-    tags = query[:tags]
-    tags.each do |tag|
-      request = Request.joins(:tags).where('tags.name' => tag)
-      @data.concat request
+    puts query.inspect
+
+    @data = query[:tags].reduce [] do |memo, item|
+      
+      memo.concat Request.joins(:tags).where(
+        'tags.name = ? AND requests.title LIKE ?',
+        item,
+        '%' + query[:q] + '%'
+      )
     end
   end
 end

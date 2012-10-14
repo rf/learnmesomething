@@ -5,7 +5,7 @@
 window.autocomplete = []
 
 $ ->
-  ($ '#search').keydown ->
+  ($ '#search').keyup ->
     text = ($ '#search').attr 'value'
-    $.getScript "search/#{text}"
+    $.getScript "search/#{encodeURIComponent text}"
 
