@@ -25,6 +25,7 @@ class RequestsController < ApplicationController
   end
 
   def update
+    @request = Request.find(params[:id])
   end
 
   def edit

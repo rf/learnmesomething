@@ -234,6 +234,7 @@ DEPENDENCIES
   hpricot (>= 0.8.6)
   jquery-rails
   launchy (>= 2.1.2)
+  nokogiri
   rails (= 3.2.8)
   rolify (>= 3.2.0)
   rspec-rails (>= 2.11.0)
