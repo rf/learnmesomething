@@ -7,7 +7,25 @@
         %form{ "data-remote" => "true", :action => "/search", :id => "ajax-search-form" }
           %div.twelve.mobile-four.columns
             %input#search{ :type => "text", :name => "query" }
-      %h4= link_to "Or ask a new question", new_request_path
       %ul#questions-autocomplete
+      %h4= link_to "Or ask a new question", new_request_path
     %div.four.columns
       = render 'requests/user_requests'
+  - else  
+    .twelve.columns
+      %h1.center= image_tag "logo.png"
+      %p.panel Education on the web has a huge disconnect today. On one end, there are people with questions that need answering, and a lack of quality content to satisfy their needs. On the other end are aspiring content creators with vast pools of knowledge, but no idea where to start. Learn Me Something smashes these two groups of people together. Now people can request full lessons about certain topics and subjects, and content creators can find their audience.
+      %h2 Search asked questions
+      %div.row.collapse
+        %form{ "data-remote" => "true", :action => "/search", :id => "ajax-search-form" }
+          %div.twelve.mobile-four.columns
+            %input#search{ :type => "text", :name => "query" }
+      %ul#questions-autocomplete
+      %h2{style: "margin-top: 60px;"} 
+        More about
+        %span.brand Learn Me Something
+      #featured
+        = link_to "profile.png"
+        = link_to "question-responses.png"
+        = link_to "question.png"
+        = link_to "search-for-questions.png"
