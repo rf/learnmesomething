@@ -1,4 +1,10 @@
 class Tag < ActiveRecord::Base
-  belongs_to :taggable, :polymorphic => true
   attr_accessible :name
+
+  has_many :request_tags
+  has_many :requests, :through => :request_tags
+
+  has_many :user_tags
+  has_many :users, :through => :user_tags
+
 end
