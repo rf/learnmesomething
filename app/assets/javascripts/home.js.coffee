@@ -15,11 +15,14 @@ $ ->
       $.get "search/#{encodeURIComponent text}", livesearch
     else
       container.html("")
+      $('ul#questions-autocomplete').hide()
+
 
   ($ "#ajax-search-form").bind "ajax:success", (evt, data, status, xhr) ->
     livesearch($.parseJSON(xhr.responseText))
 
   livesearch = (questions) ->
+    $('ul#questions-autocomplete').show()
     if(questions.length)
       container.html("")
 
