@@ -11,7 +11,7 @@
  *= require_self
  *= require foundation_and_overrides
  *= require jquery.ui.autocomplete 
- *- require_tree .
+ *= require_tree .
  *= require jquery.tagsinput
  *= require general_enclosed_foundicons
  *= require general_enclosed_foundicons_ie7

@@ -13,6 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.autocomplete
-//= require foundation
-//- require_tree .
 //= require jquery.tagsinput.min
+//= require foundation
+//= require_tree .
