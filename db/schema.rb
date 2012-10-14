@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121014044433) do
+ActiveRecord::Schema.define(:version => 20121014164921) do
 
   create_table "request_tags", :force => true do |t|
     t.integer  "request_id"
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(:version => 20121014044433) do
 
   add_index "request_tags", ["request_id"], :name => "index_request_tags_on_request_id"
   add_index "request_tags", ["tag_id"], :name => "index_request_tags_on_tag_id"
+
+  create_table "request_votes", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "request_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "request_votes", ["request_id"], :name => "index_request_votes_on_request_id"
+  add_index "request_votes", ["user_id"], :name => "index_request_votes_on_user_id"
 
   create_table "requests", :force => true do |t|
     t.integer  "user_id"
@@ -34,6 +44,16 @@ ActiveRecord::Schema.define(:version => 20121014044433) do
   end
 
   add_index "requests", ["user_id"], :name => "index_requests_on_user_id"
+
+  create_table "response_votes", :force => true do |t|
+    t.integer  "response_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "response_votes", ["response_id"], :name => "index_response_votes_on_response_id"
+  add_index "response_votes", ["user_id"], :name => "index_response_votes_on_user_id"
 
   create_table "responses", :force => true do |t|
     t.integer  "request_id"
