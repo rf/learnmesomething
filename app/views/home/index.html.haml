@@ -1,8 +1,5 @@
 %div.row
-  %div.twelve.columns
-    - if user_signed_in?
-      = render 'requests/user_requests'
-  %div.twelve.columns
+  %div.eight.columns
     %h2
       Find or ask a question
     %div.row.collapse
@@ -10,3 +7,6 @@
         %div.twelve.mobile-four.columns
           %input#search{ :type => "text", :name => "query" }
     %div#questions
+  - if user_signed_in?
+    %div.four.columns
+      = render 'requests/user_requests'
