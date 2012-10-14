@@ -1,4 +1,6 @@
 %h3 Home
+- if user_signed_in?
+  = render 'requests/user_requests'
 - @users.each do |user|
   %p
     User: #{link_to user.name, user}

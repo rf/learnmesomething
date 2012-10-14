@@ -1,0 +1,7 @@
+%h4 Pending Questions
+%ul.questions-sidebar
+  - @requests.each do |request|
+    %li.question-preview
+      = link_to request_path request do
+        %h6= request.title
+        %p= truncate request.description, length: 20
