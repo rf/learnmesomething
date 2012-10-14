@@ -5,19 +5,25 @@
 window.autocomplete = []
 
 $ ->
+  container = $("#questions")
+
   ($ '#search').keyup ->
-    container = $("#questions")
 
     text = ($ '#search').attr 'value'
+
     if(text && text.length)
-      $.get "search/#{encodeURIComponent text}", (questions) ->
-
-        if(questions.length)
-          container.html("")
-
-          for question in questions
-            container.append("<div class='row collapse'><div class='two columns'>#{question.total_votes}</div><div class='ten columns'><a href='#{question.relative_path}'><h3>#{question.title}</h3></a></div></div>")
-        else
-          container.html("No suggestions")
+      $.get "search/#{encodeURIComponent text}", livesearch
     else
       container.html("")
+
+  ($ "#ajax-search-form").bind "ajax:success", (evt, data, status, xhr) ->
+    livesearch($.parseJSON(xhr.responseText))
+
+  livesearch = (questions) ->
+    if(questions.length)
+      container.html("")
+
+      for question in questions
+        container.append("<div class='row collapse'><div class='two columns'>#{question.total_votes}</div><div class='ten columns'><a href='#{question.relative_path}'><h3>#{question.title}</h3></a></div></div>")
+    else
+      container.html("No suggestions")

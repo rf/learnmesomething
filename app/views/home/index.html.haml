@@ -3,7 +3,7 @@
     %h2
       Find or ask a question
     %div.row.collapse
-      %form{ :remote => "true", :action => "/search" }
+      %form{ "data-remote" => "true", :action => "/search", :id => "ajax-search-form" }
         %div.twelve.mobile-four.columns
-          %input#search{ :type => "text" }
+          %input#search{ :type => "text", :name => "query" }
     %div#questions
