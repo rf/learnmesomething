@@ -31,4 +31,9 @@ gem "devise", ">= 2.1.2"
 gem "devise_invitable", ">= 1.0.3"
 gem "cancan", ">= 1.6.8"
 gem "rolify", ">= 3.2.0"
+
+group :production do
+  gem "activerecord-mysql2-adapter"
+end
+
 gem 'nokogiri'
