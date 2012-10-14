@@ -7,6 +7,20 @@ namespace :bootstrap do
       description: "Please describe limits to me using small words and visual aids",
       upvotes: 1
     )
+
+    Request.create(
+      title: "What is the difference between the fat arrow and regular arrow in CoffeeScript??", 
+      downvotes: 0,  
+      description: "I am confuse lol.",
+      upvotes: 1
+    )
+
+    Request.create(
+      title: "Should I eat this tofu based burrito?",
+      downvotes: 0,  
+      description: "I am confuse lol.",
+      upvotes: 1
+    )
   end
 
   desc "Run all bootstrapping stuffs"
