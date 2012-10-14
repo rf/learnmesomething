@@ -5,6 +5,11 @@ class RequestsController < ApplicationController
     @requests = Request.all
   end
 
+  def show
+    @request = Request.find(params[:id])
+    @response = @request.responses.new
+  end
+
   def new
     @request = Request.new
   end
@@ -22,10 +27,6 @@ class RequestsController < ApplicationController
       	format.html { render :action => "new" }
       end
     end
-  end
-
-  def show
-    @request = Request.find(params[:id])
   end
 
   def update
