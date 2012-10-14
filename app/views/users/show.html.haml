@@ -5,7 +5,7 @@
   Email: #{@user.email if @user.email}
 
 - @user.responses.each do |response|
-  %h4 #{response.title}
+  %h4 Question: #{response.request.title}
   .row
     %p.twelve.columns
       #{truncate(response.response, :length => 1000, :omission => "...")} #{link_to("(Full Article)", response.url)}
