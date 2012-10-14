@@ -1,5 +1,10 @@
 - @responses.each do |response|
   %div.row.comment
+    %button.general.foundicon-plus
+      = link_to 
+    %button.general.foundicon-minus
+      %p
+        downvote
     %p.votes.two.columns
       #{response.total_votes}
     %p.url.ten.columns
