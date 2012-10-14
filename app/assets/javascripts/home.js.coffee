@@ -5,7 +5,7 @@
 window.autocomplete = []
 
 $ ->
-  container = $("#questions")
+  container = $("#questions-autocomplete")
 
   ($ '#search').keyup ->
 
@@ -24,6 +24,6 @@ $ ->
       container.html("")
 
       for question in questions
-        container.append("<div class='row collapse'><div class='two columns'>#{question.total_votes}</div><div class='ten columns'><a href='#{question.relative_path}'><h3>#{question.title}</h3></a></div></div>")
+        container.append("<li class='row collapse'><div class='two columns'>#{question.total_votes} votes</div><div class='ten columns'><a href='#{question.relative_path}'><h3>#{question.title}</h3></a></div></div>")
     else
       container.html("No suggestions")

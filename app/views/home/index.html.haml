@@ -6,7 +6,7 @@
       %form{ "data-remote" => "true", :action => "/search", :id => "ajax-search-form" }
         %div.twelve.mobile-four.columns
           %input#search{ :type => "text", :name => "query" }
-    %div#questions
+    %ul#questions-autocomplete
   - if user_signed_in?
     %div.four.columns
       = render 'requests/user_requests'
