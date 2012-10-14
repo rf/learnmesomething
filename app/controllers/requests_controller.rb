@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
   def new
-    @user = User.find(params[:user_id])
+    @request = User.find(params[:user_id])
     @request = Request.new
   end
 
@@ -26,13 +26,27 @@ class RequestsController < ApplicationController
 
   def update
     @request = Request.find(params[:id])
+    respond_to do |format|
+      if @request.update_attributes(params[:request])
+      	format.html { redirect_to requests_path, :notice => 'Requests have been updated.' }
+        format.json { render :json => @request, :status => :created, :location => @request }
+      else
+      	format.html { render :action => "edit" }
+        format.json { render :json => @request.errors, :status => :unprocessable_entity }
+      end
+    end
   end
 
   def edit
-
+    @request = Request.find(params[:id])
   end
 
   def destroy
+    @request = Request.find(params[:id])
+    @request.destroy
 
+    respond_to do |format|
+      format.html { redirect_to requests_path }
+    end
   end
 end
