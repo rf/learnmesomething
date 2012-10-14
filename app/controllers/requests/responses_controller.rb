@@ -43,16 +43,39 @@ class Requests::ResponsesController < ApplicationController
 
   def upvote
     @response = Response.find params[:id]
-    @response.upvotes += 1
-    @response.save
-    redirect_to request_path @response.request, notice: 'Your vote has been counted'
+    @response_vote = ResponseVote.where(:user_id => current_user.id, 
+                                        :response_id => @response.id)
+    respond_to do |format|
+      if @response_vote.count == 0
+        @response.upvotes += 1
+        @response.save
+        @response_vote = ResponseVote.create(:user_id => current_user.id, 
+                                          :response_id => @response.id)
+        @response_vote.save
+        format.html { redirect_to request_path(@response.request), :notice => 'Your vote has been counted'}
+      else
+        format.html { redirect_to request_path(@response.request), :notice => 'Your vote has already already already already already already already already been counted' }
+      end
+    end
   end
 
   def downvote
     @response = Response.find params[:id]
-    @response.downvotes += 1
-    @response.save
-    redirect_to request_path @response.request, notice: 'Your vote has been counted'
+    @response_vote = ResponseVote.where(:user_id => current_user.id, 
+                                        :response_id => @response.id)
+    respond_to do |format|
+      if @response_vote.count == 0
+        @response.downvotes += 1
+        @response.save
+        @response_vote = ResponseVote.create(:user_id => current_user.id, 
+                                          :response_id => @response.id)
+        @response_vote.save
+          
+        format.html{  redirect_to request_path(@response.request), :notice => 'Your vote has been counted'}
+      else
+        format.html{ redirect_to request_path(@response.request), :notice => 'Your vote has already already already already already already already already been counted' }
+      end
+    end
   end
   private
 
