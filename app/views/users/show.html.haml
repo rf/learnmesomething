@@ -1,12 +1,13 @@
 %h3 #{@user.name}'s Stuff
-%p
-  User: #{@user.name}
-%p
-  Email: #{@user.email if @user.email}
 - @user.responses.each do |response|
-  %h4 Question: #{response.request.title}
-  .row
-    %p.twelve.columns
-      #{truncate(response.response, :length => 1000, :omission => "...")} #{link_to("(Full Article)", response.url)}
+  %article
+    - if response.is_youtube?
+      .flex-video.widescreen
+        = "#{truncate(response.response, :length => 1000, :omission => "...")}".html_safe
+    - else
+      = "#{truncate(response.response, :length => 1000, :omission => "...")} #{link_to("(Full Article)", response.url)}".html_safe
+    %h4 
+      in response to: 
+      = link_to response.request.title, request_path(response.request)
 
 = link_to "Make a new Question", new_request_path
