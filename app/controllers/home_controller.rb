@@ -1,5 +1,10 @@
 class HomeController < ApplicationController
   def index
+    if user_signed_in?
+      @requests = current_user.requests
+    else
+      @requests = []
+    end
     @users = User.all
   end
 

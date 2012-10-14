@@ -1,3 +1,32 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+ul.questions-sidebar {
+    float: left;
+    list-style: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #eee;
+
+    li.question-preview {
+        border-bottom: 1px solid #ccc;
+        padding: 8px;
+
+        &:last-child {
+            border-bottom: 0px;
+        }
+
+        &:hover {
+            background: #ddd;
+        }
+
+        p, h6 {
+            margin: 0px;
+        }
+
+        p {
+            color: #999;
+        }
+    }
+}
