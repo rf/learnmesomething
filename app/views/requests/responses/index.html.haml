@@ -1,14 +1,10 @@
 - @responses.each do |response|
   %div.row.comment
     %button.general.foundicon-plus
-      = link_to 
+      = link_to "Upvote", upvote_request_response(@response.request, @response)
     %button.general.foundicon-minus
-      %p
-        downvote
+      = link_to "Down Vote", downvote_request_response(@response.request, @response)
     %p.votes.two.columns
       #{response.total_votes}
-    %p.url.seven.columns
+    %p.url.ten.columns
       #{response.url}
-    %p.three.columns
-      - if @request.user == current_user
-        = link_to "Delete", request_response_path(@request, response), method: :delete, :confirm => "Are you sure you want to delete this response?" 
