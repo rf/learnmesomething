@@ -3,7 +3,7 @@ class Request < ActiveRecord::Base
   has_many :tags, :as => :taggable
   has_many :responses
 
-  attr_accessible :description, :downvotes, :title, :upvotes
+  attr_accessible :description, :downvotes, :title, :upvotes, :user_id
 
   validates_presence_of :title
   validates_presence_of :description

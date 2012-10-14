@@ -3,6 +3,7 @@ class RequestsController < ApplicationController
   def index
     @requests = Request.all
   end
+  
   def new
     @request = User.find(params[:user_id])
     @request = Request.new
@@ -10,7 +11,7 @@ class RequestsController < ApplicationController
 
   def create
     @request = Request.create(params[:request])
-    @request[:user_id] = params[:user_id]
+    @request[:user_id] = current_user.id
     @request[:upvotes] = 0
     @request[:downvotes] = 0
     respond_to do |format|
