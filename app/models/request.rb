@@ -4,4 +4,8 @@ class Request < ActiveRecord::Base
   has_many :responses
 
   attr_accessible :description, :downvotes, :title, :upvotes
+
+  validates_presence_of :title
+  validates_presence_of :description
+
 end

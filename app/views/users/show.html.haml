@@ -3,3 +3,5 @@
   User: #{@user.name}
 %p
   Email: #{@user.email if @user.email}
+
+= link_to "Make a new Question", new_user_request_path(@user)
