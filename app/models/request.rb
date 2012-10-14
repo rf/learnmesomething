@@ -22,7 +22,11 @@ class Request < ActiveRecord::Base
     url_helpers.request_path(self)
   end
 
+  def user_email
+    self.user.email
+  end
+
   def as_json(options = {})
-    super(options.reverse_merge({ :methods => [:relative_path, :total_votes] }))
+    super(options.reverse_merge({ :methods => [:relative_path, :total_votes, :user_email] }))
   end
 end
