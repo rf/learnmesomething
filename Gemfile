@@ -16,7 +16,7 @@ end
 
 gem 'jquery-rails'
 gem 'foreman'
-gem "thin", ">= 1.5.0", :group => [:development, :test]
+#gem "thin", ">= 1.5.0", :group => [:development, :test]
 gem "unicorn", ">= 4.3.1", :group => :production
 gem "haml", ">= 3.1.7"
 gem "haml-rails", ">= 0.3.5", :group => :development
